@@ -1,0 +1,9 @@
+node_modules/
+npm-debug.log*
+
+.envs
+
+.vscode/
+
+dist/
+build/
