@@ -6,9 +6,9 @@ const subareaSchema = mongoose.Schema({
         required: true
     },
 
-    id_catalogo: {
+    id_area: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Catalogo', 
+        ref: 'Area', 
         required: true
     }
 });
