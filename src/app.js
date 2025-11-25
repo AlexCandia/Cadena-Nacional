@@ -29,7 +29,7 @@ app.use('/users', usersRouter);
 app.get('/api/health', (req, res) => {
   res.json({ 
     status: 'OK', 
-    message: 'API funcionando correctamente',
+    message: 'API funcionando',
     timestamp: new Date().toISOString()
   });
 });
