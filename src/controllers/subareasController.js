@@ -8,7 +8,7 @@ const createSubarea = async (req, res) => {
 
     const areaExists = await Area.findById(id_area);
     if (!areaExists) {
-      return res.status(404).json({ error: 'Área no encontrada' });
+      return res.status(404).json({ error: 'Area no encontrada' });
     }
 
     const subarea = new Subarea({
@@ -18,7 +18,7 @@ const createSubarea = async (req, res) => {
 
     await subarea.save();
     res.status(201).json({
-      message: 'Subárea creada con éxito',
+      message: 'Subarea creada con exito',
       data: subarea
     });
   } catch (error) {
@@ -49,11 +49,11 @@ const getSubareaById = async (req, res) => {
     const subarea = await Subarea.findById(id).populate('id_area', 'nombre_area');
 
     if (!subarea) {
-      return res.status(404).json({ error: 'Subárea no encontrada' });
+      return res.status(404).json({ error: 'Subarea no encontrada' });
     }
 
     res.status(200).json({
-      message: 'Subárea encontrada con éxito',
+      message: 'Subarea encontrada con exito',
       data: subarea
     });
   } catch (error) {
