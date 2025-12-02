@@ -8,6 +8,7 @@ const connectDB = require('./utils/database')
 
 const areaRoutes = require('./modules/routes/areas');
 const catalogoRoutes = require('./modules/routes/catalogos')
+const subareaRoutes = require('./modules/routes/subareas')
 
 connectDB();
 
@@ -28,7 +29,7 @@ app.use(express.json());
 //Rutas
 app.use('/api/areas', areaRoutes);
 app.use('/api/catalogos', catalogoRoutes);
-
+app.use('/api/subareas', subareaRoutes);
 //prueba de health
 app.get('/api/health', (req, res) => {
   res.json({ 

@@ -24,6 +24,19 @@ const getCatalogos = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+const updateCatalogo = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const {nombre_nuevo} = req.body;
+    const updatedCatalogo = await catalogoServices.updateCatalogo(id,nombre_nuevo);
+    res.json({
+      message: 'Catalogo actualizado con exito',
+      data: updatedCatalogo
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  } 
+};    
 const deleteCatalogo = async (req, res) => {
   try {
     const { id } = req.params;
@@ -37,5 +50,6 @@ const deleteCatalogo = async (req, res) => {
 module.exports = {
   createCatalogo,
   getCatalogos,
-  deleteCatalogo
+  updateCatalogo,
+  deleteCatalogo,
 };

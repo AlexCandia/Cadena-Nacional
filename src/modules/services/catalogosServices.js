@@ -14,6 +14,15 @@ class CatalogoService {
         .sort({ titulo: 1 });
         return catalogos;
     };
+    async updateCatalogo(id,nombre_nuevo) {
+        const catalogo = await Catalogo.findById(id);
+        if (!catalogo) {
+            throw new Error('Catalogo no encontrado');
+        }
+        catalogo.titulo = nombre_nuevo;
+        await catalogo.save();
+        return catalogo;
+    }
     async deleteCatalogo(id) {
         await Catalogo.findByIdAndDelete(id);
     }

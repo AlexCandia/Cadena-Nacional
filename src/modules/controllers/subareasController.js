@@ -1,22 +1,11 @@
 const Subarea = require('../../models/Subarea');
 const Area = require('../../models/Area');
-
+const subareaService = require('../services/subareasService');
 
 const createSubarea = async (req, res) => {
   try {
     const { nombre_subarea, id_area } = req.body;
-
-    const areaExists = await Area.findById(id_area);
-    if (!areaExists) {
-      return res.status(404).json({ error: 'Area no encontrada' });
-    }
-
-    const subarea = new Subarea({
-      nombre_subarea,
-      id_area
-    });
-
-    await subarea.save();
+    const subarea = await subareaService.createSubarea(nombre_subarea,id_area);
     res.status(201).json({
       message: 'Subarea creada con exito',
       data: subarea

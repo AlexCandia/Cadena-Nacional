@@ -41,24 +41,24 @@ class AreaService {
         return areas;
     }
     async updateArea(id, campo, dato_nuevo) {
-    const area = await Area.findById(id);
-    if (!area) {
-        throw new Error('Area no encontrada');
-    }
-    const camposExistentes = ['nombre_area', 'id_catalogo'];
-    if (!camposExistentes.includes(campo)) {
-        throw new Error(`Campo '${campo}' no existe`);
-    }
-    if (campo === 'id_catalogo') {
-        const catalogoExists = await Catalogo.findById(dato_nuevo);
-        if (!catalogoExists) {
-            throw new Error('Catalogo no encontrado');
+        const area = await Area.findById(id);
+        if (!area) {
+            throw new Error('Area no encontrada');
         }
+        const camposExistentes = ['nombre_area', 'id_catalogo'];
+        if (!camposExistentes.includes(campo)) {
+            throw new Error(`Campo '${campo}' no existe`);
+        }
+        if (campo === 'id_catalogo') {
+            const catalogoExists = await Catalogo.findById(dato_nuevo);
+            if (!catalogoExists) {
+                throw new Error('Catalogo no encontrado');
+            }
+        }
+        area[campo] = dato_nuevo;
+        await area.save();
+        return area;
     }
-    area[campo] = dato_nuevo;
-    await area.save();
-    return area;
-}
     async deleteArea(id) {
         const area = await Area.findById(id);
         if (!area) {
