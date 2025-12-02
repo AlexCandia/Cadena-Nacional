@@ -4,5 +4,6 @@ const catalogoController = require('../controllers/catalogosController');
 
 router.post('/', catalogoController.createCatalogo);
 router.get('/', catalogoController.getCatalogos);
+router.delete('/:id', catalogoController.deleteCatalogo); 
 
 module.exports = router;

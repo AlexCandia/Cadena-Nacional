@@ -14,5 +14,8 @@ class CatalogoService {
         .sort({ titulo: 1 });
         return catalogos;
     };
+    async deleteCatalogo(id) {
+        await Catalogo.findByIdAndDelete(id);
+    }
 }
 module.exports = new CatalogoService();

@@ -24,8 +24,18 @@ const getCatalogos = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+const deleteCatalogo = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await catalogoServices.deleteCatalogo(id);
+    res.json({ message: 'Catalogo eliminado con exito' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 module.exports = {
   createCatalogo,
-  getCatalogos
+  getCatalogos,
+  deleteCatalogo
 };

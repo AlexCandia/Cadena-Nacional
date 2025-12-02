@@ -61,13 +61,25 @@ const getAreasByCatalogo = async (req, res) => {
 const updateArea = async (req, res) => {
     try {
         const { id } = req.params;
-        const { nombre_area, id_catalogo } = req.body;
-        const updatedArea = await areaService.updateArea(id, nombre_area, id_catalogo);
+        const campo = req.body.campo;
+        const dato_nuevo = req.body.dato_nuevo;
+        console.log(campo, dato_nuevo);
+        if (!campo || dato_nuevo === undefined) {
+            return res.status(400).json({ 
+                error: 'Bad Request' 
+            });
+        }
+        
+        const updatedArea = await areaService.updateArea(id, campo, dato_nuevo);
         res.json({
-            message: 'Área actualizada con éxito',
+            message: 'Area Actualizada',
             data: updatedArea
         });
-    }catch (error) {
+    } catch (error) {
+        if (error.message === 'Area no encontrada' || 
+            error.message === 'Catalogo no encontrado') {
+            return res.status(404).json({ error: error.message });
+        }
         res.status(500).json({ error: error.message });
     }
 };
