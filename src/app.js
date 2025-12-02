@@ -6,8 +6,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const connectDB = require('./utils/database')
 
-const areaRoutes = require('./routes/areas');
-const catalogoRoutes = require('./routes/catalogos')
+const areaRoutes = require('./modules/routes/areas');
+const catalogoRoutes = require('./modules/routes/catalogos')
 
 connectDB();
 
@@ -26,8 +26,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 //Rutas
-app.use('/api', areaRoutes);
-app.use('/api', catalogoRoutes);
+app.use('/api/areas', areaRoutes);
+app.use('/api/catalogos', catalogoRoutes);
 
 //prueba de health
 app.get('/api/health', (req, res) => {

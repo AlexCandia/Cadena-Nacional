@@ -1,14 +1,9 @@
-const Catalogo = require('../models/Catalogo');
+const catalogoServices = require('../services/catalogosServices');
 
 const createCatalogo = async (req, res) => {
   try {
     const { titulo } = req.body;
-
-    const catalogo = new Catalogo({
-      titulo,
-    });
-
-    await catalogo.save();
+    const catalogo = await catalogoServices.createCatalogo(titulo);
     res.status(201).json({
       message: 'Catalogo creado con exito',
       data: catalogo
@@ -20,9 +15,7 @@ const createCatalogo = async (req, res) => {
 
 const getCatalogos = async (req, res) => {
   try {
-    const catalogos = await Catalogo.find()
-      .sort({ titulo: 1 });
-
+    const catalogos = await catalogoServices.getCatalogos()
     res.json({
       count: catalogos.length,
       data: catalogos

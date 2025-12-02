@@ -1,5 +1,5 @@
-const Subarea = require('../models/Subarea');
-const Area = require('../models/Area');
+const Subarea = require('../../models/Subarea');
+const Area = require('../../models/Area');
 
 
 const createSubarea = async (req, res) => {

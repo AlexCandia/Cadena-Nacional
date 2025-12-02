@@ -25,11 +25,11 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-const db = require('../utils/db');
+const db = require('../utils/database');
 
 (async function start() {
   try {
-    await db.connect();
+    await db();
     server.listen(port);
     server.on('error', onError);
     server.on('listening', onListening);
