@@ -20,32 +20,55 @@ class SubareaService {
 
     async getSubareas() {
         const subareas = await Subarea.find()
-        .populate('id_area', 'nombre_area')
+        .populate('id_area', 'nombre_subarea')
         .sort({ nombre_subarea: 1 });
+        return subareas;
     };
 
 
-    async getSubareaById() {
-        const { id } = req.params;
-        const subarea = await Subarea.findById(id).populate('id_area', 'nombre_area');
+    async getSubareaById(id) {
+        const subarea = await Subarea.findById(id)
 
         if (!subarea) {
-        return res.status(404).json({ error: 'Subarea no encontrada' });
+            throw new Error('Subarea no encontrada');
         }
-
-        res.status(200).json({
-        message: 'Subarea encontrada con exito',
-        data: subarea
-        });
+        return subarea;
     };
 
 
-    async getSubareasByArea() {
-        const subareas = await Subarea.find({ id_area: req.params.areaId })
-        .populate('id_area', 'nombre_area')
+    async getSubareasByArea(areaId) {
+        const subareas = await Subarea.find({ id_area: areaId })
+        .populate('id_area')
         .sort({ nombre_subarea: 1 });
-
+        return subareas;
     };
+    async updateSubarea(id, campo, dato_nuevo) {
+        const subarea = await Subarea.findById(id);
+        if (!subarea) {
+            throw new Error('Subarea no encontrada');
+        }
+        const camposExistentes = ['nombre_subarea', 'id_area'];
+        if (!camposExistentes.includes(campo)) {
+            throw new Error(`Campo '${campo}' no existe`);
+        }
+        if (campo === 'id_area') {
+            const areaExists = await Area.findById(dato_nuevo);
+            if (!areaExists) {
+                throw new Error('Area no encontrada');
+            }
+        }
+        subarea[campo] = dato_nuevo;
+        await subarea.save();
+        return subarea;
+    }
+    async deleteSubarea(id) {
+        const subarea = await Subarea.findById(id);
+        if (!subarea) {
+            throw new Error('Subarea no encontrada');
+        }
+        await Subarea.deleteOne({ _id: id });
+        return; 
+    }
 }
 
 module.exports = new SubareaService();
