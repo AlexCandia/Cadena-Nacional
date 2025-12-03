@@ -1,12 +1,13 @@
 const Area = require('../../models/Area');
 const Catalogo = require('../../models/Catalogo');
-
+const { nameValidator } = require('../../utils/nameValidator');
 class AreaService {
     async createArea(nombre_area, id_catalogo) {
+        nameValidator(nombre_area);
         const catalogoExists = await Catalogo.findById(id_catalogo);
         const subareaExists = await Area.findOne({ nombre_area, id_catalogo });
         if (subareaExists) {
-            throw new Error('Area ya existe en el catalogo especificado');
+            throw new Error('Area ya existe');
         }
         if (!catalogoExists) {
             throw new Error('Catálogo no encontrado');
@@ -30,7 +31,7 @@ class AreaService {
     async getAreaById(id) {
         const area = await Area.findById(id);
         if (!area) {
-            throw new Error('Área no encontrada');
+            throw new Error('Area no encontrada');
         }
         return area;
     }
@@ -58,6 +59,9 @@ class AreaService {
             if (!catalogoExists) {
                 throw new Error('Catalogo no encontrado');
             }
+        }
+        if(campo === 'nombre_area') {
+            nameValidator(dato_nuevo);
         }
         area[campo] = dato_nuevo;
         await area.save();
