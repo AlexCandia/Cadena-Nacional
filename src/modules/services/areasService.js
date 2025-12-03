@@ -3,13 +3,11 @@ const Catalogo = require('../../models/Catalogo');
 
 class AreaService {
     async createArea(nombre_area, id_catalogo) {
-        // Validar que el catálogo exista
         const catalogoExists = await Catalogo.findById(id_catalogo);
         if (!catalogoExists) {
             throw new Error('Catálogo no encontrado');
         }
 
-        // Crear el área
         const area = new Area({
             nombre_area,
             id_catalogo
@@ -40,6 +38,7 @@ class AreaService {
             .sort({ nombre_area: 1 });
         return areas;
     }
+
     async updateArea(id, campo, dato_nuevo) {
         const area = await Area.findById(id);
         if (!area) {
@@ -59,6 +58,7 @@ class AreaService {
         await area.save();
         return area;
     }
+    
     async deleteArea(id) {
         const area = await Area.findById(id);
         if (!area) {
