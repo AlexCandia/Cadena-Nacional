@@ -15,13 +15,18 @@ const authRoutes = require('./modules/routes/auth');
 var app = express();
 
 const initializeRoles = async () => {
-    try {
-        await Role.initializeRoles();
-    } catch (error) {
-        console.error('Error al inicializar roles:', error);
-    }
+  try {
+    await Role.initializeRoles();
+  } catch (error) {
+    console.error('Error al inicializar roles:', error);
+  }
 };
-initializeRoles();
+
+connectDB().then(() => {
+  initializeRoles();
+}).catch((error) => {
+  console.error('Error al conectar a MongoDB:', error);
+});
 
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
@@ -37,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/areas', areaRoutes);
 app.use('/api/catalogos', catalogoRoutes);
 app.use('/api/subareas', subareaRoutes);
-app.use('/api/auth', authRoutes); // Nueva ruta
+app.use('/api/auth', authRoutes);
 
 //prueba de health
 app.get('/api/health', (req, res) => {
