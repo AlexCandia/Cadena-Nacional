@@ -11,7 +11,7 @@ function nameValidator(nombre) {
     for (let word of words) {
         if (word === '') continue;
         const string = /^[A-Z][a-z0-9]*$/;
-        if (!string.test(palabra)) {
+        if (!string.test(word)) {
             throw new Error(`Nombre debe comenzar con mayuscula y contener solo letras o numeros`);
         }
     }
