@@ -12,8 +12,6 @@ const catalogoRoutes = require('./modules/routes/catalogos')
 const subareaRoutes = require('./modules/routes/subareas')
 const authRoutes = require('./modules/routes/auth'); 
 
-connectDB();
-
 var app = express();
 
 const initializeRoles = async () => {
