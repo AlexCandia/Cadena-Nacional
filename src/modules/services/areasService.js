@@ -3,13 +3,14 @@ const Catalogo = require('../../models/Catalogo');
 
 class AreaService {
     async createArea(nombre_area, id_catalogo) {
-        // Validar que el catálogo exista
         const catalogoExists = await Catalogo.findById(id_catalogo);
+        const subareaExists = await Area.findOne({ nombre_area, id_catalogo });
+        if (subareaExists) {
+            throw new Error('Area ya existe en el catalogo especificado');
+        }
         if (!catalogoExists) {
             throw new Error('Catálogo no encontrado');
         }
-
-        // Crear el área
         const area = new Area({
             nombre_area,
             id_catalogo
@@ -38,6 +39,9 @@ class AreaService {
         const areas = await Area.find({ id_catalogo: catalogoId })
             .populate('id_catalogo')
             .sort({ nombre_area: 1 });
+        if(areas.length === 0) {
+            throw new Error('No se encontraron areas para el catalogo especificado');
+        }
         return areas;
     }
     async updateArea(id, campo, dato_nuevo) {

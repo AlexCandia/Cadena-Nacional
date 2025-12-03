@@ -4,6 +4,10 @@ const Area = require('../../models/Area');
 class SubareaService {
     async createSubarea(nombre_subarea, id_area) {
         const areaExists = await Area.findById(id_area);
+        const subareaExists = await Subarea.findOne({ nombre_subarea, id_area });
+        if (subareaExists) {
+            throw new Error('Subarea ya existe en el área especificada');
+        }
         if (!areaExists) {
         return res.status(404).json({ error: 'Area no encontrada' });
         }
@@ -40,6 +44,9 @@ class SubareaService {
         const subareas = await Subarea.find({ id_area: areaId })
         .populate('id_area')
         .sort({ nombre_subarea: 1 });
+        if(subareas.length === 0) {
+            throw new Error('No se encontraron subareas para el area especificada');
+        }
         return subareas;
     };
     async updateSubarea(id, campo, dato_nuevo) {

@@ -10,8 +10,6 @@ const areaRoutes = require('./modules/routes/areas');
 const catalogoRoutes = require('./modules/routes/catalogos')
 const subareaRoutes = require('./modules/routes/subareas')
 
-connectDB();
-
 var app = express();
 
 // view engine setup
