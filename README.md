@@ -14,3 +14,5 @@ Administrativos:
 
 Health:
   GET  /api/health                   - Estado de la API
+
+Certificados generados con openssl de git bash
