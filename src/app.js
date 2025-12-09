@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 const express = require('express');
-const spdy = require('spdy');
 const fs = require('fs');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -44,8 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
   res.json({ 
-    message: 'HTTP/2 con SPDY',
-    protocol: req.httpVersion 
+    message: 'Respuesta'
   });
 });
 
@@ -67,20 +65,5 @@ app.get('/api/health', (req, res) => {
 app.use('*', (req, res) => {
   res.status(404).json({ error: 'Ruta no encontrada' });
 });   
-
-const options = {
-  key: fs.readFileSync('./server.key'),
-  cert: fs.readFileSync('./server.crt'),
-  
-};
-
-spdy.createServer(options, app)
-  .listen(3443, (error) => {
-    if (error) {
-      console.error(error);
-      return process.exit(1);
-    }
-    console.log("Server HTTP2 corriendo en puerto 3443");
-});
 
 module.exports = app;
