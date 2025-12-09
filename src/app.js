@@ -71,16 +71,16 @@ app.use('*', (req, res) => {
 const options = {
   key: fs.readFileSync('./server.key'),
   cert: fs.readFileSync('./server.crt'),
-  allowHTTP1: true
+  
 };
 
 spdy.createServer(options, app)
-  .listen(443, (error) => {
+  .listen(3443, (error) => {
     if (error) {
       console.error(error);
       return process.exit(1);
     }
-    console.log("Server HTTP2 corriendo en puerto 443");
+    console.log("Server HTTP2 corriendo en puerto 3443");
 });
 
 module.exports = app;
