@@ -1,0 +1,22 @@
+Sobre el certificado:
+
+Deben generarse certificados con los nombres cert.pem y key.pem, y guardarlos a nivel de la carpeta
+Cadena-Nacional para que los capte express.
+
+Sobre credenciales de base de datos (Atlas):
+
+Debe de colocar este string en las variables de entorno .env para el valor de MONGODB_URI
+
+mongodb+srv://<usuario>:<contraseña>@cadenanacional.wz8i9ey.mongodb.net/myDbName?retryWrites=true&w=majority
+
+reemplazando usuario por "guest" y contraseña por "123".
+
+Y adicionar la siguiente linea al .env MONGDB_DBNAME=cuestionarios
+
+Adicional:
+
+Se debe especificar las siguientes variables de entorno que pertenecen a la encriptacion de json web token.
+Se recomienda 24h para JWT_EXPIRES_IN, o valores en horas o minutos. JWT_SECRET es una valor de encriptacion personalizable
+
+JWT_SECRET
+JWT_EXPIRES_IN
