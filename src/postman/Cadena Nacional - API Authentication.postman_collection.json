@@ -1,0 +1,256 @@
+{
+	"info": {
+		"_postman_id": "27e777ee-9a29-4976-8f3f-86c9b8d4195c",
+		"name": "Cadena Nacional - API Authentication",
+		"description": "Colección para probar los endpoints de autenticación JWT de la API Cadena Nacional",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49210687",
+		"_collection_link": "https://alexcandia-929334.postman.co/workspace/Alex-Candia's-Workspace~a3757b2e-c532-43ee-83fe-b6676b1e1b62/collection/49210687-27e777ee-9a29-4976-8f3f-86c9b8d4195c?action=share&source=collection_link&creator=49210687"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register - Nuevo Usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"administrador@cadenanacional.com\",\n  \"username\": \"admin_001\",\n  \"password\": \"fghijk123!\",\n  \"firstName\": \"Albert\",\n  \"lastName\": \"Roca\"\n}"
+						},
+						"url": {
+							"raw": "https://localhost:3000/api/auth/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						},
+						"description": "Registra un nuevo usuario en el sistema.\n\nResponsabilidad:\n- Valida los datos del usuario\n- Hashea la contraseña\n- Genera un JWT token\n- Retorna el token y datos del usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "Login - Iniciar Sesión",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "/*{\n  \"email\": \"estudiante2@example.com\",\n  \"password\": \"Password123!\"\n}*/\n/*{\n  \"email\": \"profesor@example.com\",\n  \"password\": \"abcde123!\" \n}*/\n{\n  \"email\": \"administrador@cadenanacional.com\",\n  \"password\": \"fghijk123!\" \n}"
+						},
+						"url": {
+							"raw": "https://localhost:3000/api/auth/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Inicia sesión con email y contraseña.\n\nResponsabilidad:\n- Verifica las credenciales\n- Genera un JWT token\n- Actualiza lastLogin\n- Retorna el token"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile - Mi Perfil",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"description": "Reemplaza {{jwt_token}} con el token obtenido del login"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:3000/api/auth/profile",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"profile"
+							]
+						},
+						"description": "Obtiene el perfil del usuario autenticado.\n\nRequerimientos:\n- Token JWT válido en header Authorization\n\nResponsabilidad:\n- Verifica el token\n- Retorna datos del usuario (sin contraseña)"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile - Actualizar Perfil",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"description": "Reemplaza {{jwt_token}} con el token obtenido del login"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Juan Carlos\",\n  \"lastName\": \"Pérez García\"\n}"
+						},
+						"url": {
+							"raw": "https://localhost:3000/api/auth/profile",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"profile"
+							]
+						},
+						"description": "Actualiza el perfil del usuario autenticado.\n\nRequerimientos:\n- Token JWT válido\n\nCampos actualizables:\n- firstName\n- lastName"
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password - Cambiar Contraseña",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"description": "Reemplaza {{jwt_token}} con el token obtenido del login"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"currentPassword\": \"Password123!\",\n  \"newPassword\": \"NewPassword456!\"\n}"
+						},
+						"url": {
+							"raw": "https://localhost:3000/api/auth/change-password",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"change-password"
+							]
+						},
+						"description": "Cambia la contraseña del usuario autenticado.\n\nRequerimientos:\n- Token JWT válido\n- Contraseña actual correcta\n\nValidaciones:\n- Nueva contraseña debe tener al menos 6 caracteres\n- Debe incluir una letra, un número y un carácter especial"
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Users - Lista de Usuarios (ADMIN)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{admin_token}}",
+								"description": "Reemplaza {{admin_token}} con el token de un usuario administrador"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:3000/api/auth/admin/users",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"admin",
+								"users"
+							]
+						},
+						"description": "Obtiene la lista de usuarios (SOLO para administradores).\n\nRequerimientos:\n- Token JWT de usuario con rol 'administrador'\n\nRetorna:\n- Mensaje de acceso concedido\n- Información del usuario autenticado"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints de autenticación y gestión de usuarios"
+		},
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"health"
+					]
+				},
+				"description": "Verifica si la API está funcionando correctamente"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "jwt_token",
+			"value": "",
+			"type": "string",
+			"description": "Token JWT obtenido del endpoint de login. Cópialo aquí después de hacer login."
+		},
+		{
+			"key": "admin_token",
+			"value": "",
+			"type": "string",
+			"description": "Token JWT de un usuario administrador. Úsalo para probar endpoints administrativos."
+		}
+	]
+}

@@ -1,0 +1,487 @@
+{
+	"info": {
+		"_postman_id": "d85dfae7-2cb0-4117-ac5d-8f9d7ab7bf2d",
+		"name": "Cadena Nacional",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49210687",
+		"_collection_link": "https://alexcandia-929334.postman.co/workspace/Alex-Candia's-Workspace~a3757b2e-c532-43ee-83fe-b6676b1e1b62/collection/49210687-d85dfae7-2cb0-4117-ac5d-8f9d7ab7bf2d?action=share&source=collection_link&creator=49210687"
+	},
+	"item": [
+		{
+			"name": "Crear Areas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5M2M3NWY0YWEwNmU5OWQwODVmZjQ5MiIsImVtYWlsIjoiYWRtaW5pc3RyYWRvckBjYWRlbmFuYWNpb25hbC5jb20iLCJ1c2VybmFtZSI6ImFkbWluXzAwMSIsImlhdCI6MTc2NTU3NDMzNSwiZXhwIjoxNzY1NjYwNzM1fQ.EHco4sDy996aFxEuOcMNLqCNMP-JVGZGhiCKcPJx4wE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre_area\":\"Analisis Vectorial\",\r\n    \"id_catalogo\":\"693c88a87f995e55d5564d96\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:3000/api/areas",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"areas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Areas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:3000/api/areas",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"areas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Areas Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:3000/api/areas/692e12288ab696efa34d9f79",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"areas",
+						"692e12288ab696efa34d9f79"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Areas por Catalogo",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:3000/api/areas/byCatalogo/692e12118ab696efa34d9f75",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"areas",
+						"byCatalogo",
+						"692e12118ab696efa34d9f75"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Campo Area",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"campo\": \"nombre_area\",\r\n  \"dato_nuevo\": \"Algebra\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:3000/api/areas/6926197aabfd7705674567eb",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"areas",
+						"6926197aabfd7705674567eb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar Area",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre_area\":\"Calculo\",\r\n    \"id_catalogo\":\"692e12118ab696efa34d9f75\"\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:3000/api/areas/6926197aabfd7705674567eb",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"areas",
+						"6926197aabfd7705674567eb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Catalogos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5M2M3NWY0YWEwNmU5OWQwODVmZjQ5MiIsImVtYWlsIjoiYWRtaW5pc3RyYWRvckBjYWRlbmFuYWNpb25hbC5jb20iLCJ1c2VybmFtZSI6ImFkbWluXzAwMSIsImlhdCI6MTc2NTU3NDMzNSwiZXhwIjoxNzY1NjYwNzM1fQ.EHco4sDy996aFxEuOcMNLqCNMP-JVGZGhiCKcPJx4wE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"titulo\":\"Ingles\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:3000/api/catalogos",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"catalogos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Catalogos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:3000/api/catalogos",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"catalogos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Catalogo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre_nuevo\":\"Farmacologia\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:3000/api/catalogos/692dfc7e5cca531d6612bb6c",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"catalogos",
+						"692dfc7e5cca531d6612bb6c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar Catalogo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:3000/api/catalogos/69261929abfd7705674567e7",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"catalogos",
+						"69261929abfd7705674567e7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Subarea",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre_subarea\":\"Limites\",\r\n    \"id_area\":\"692e12288ab696efa34d9f79\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:3000/api/subareas",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"subareas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Subareas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre_subarea\":\"Integrales\",\r\n    \"id\":\"692e12288ab696efa34d9f79\"\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:3000/api/subareas",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"subareas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Subareas Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre_subarea\":\"Integrales\",\r\n    \"id\":\"692e12288ab696efa34d9f79\"\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:3000/api/subareas/692f3b2f53bec9b1c971fb05",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"subareas",
+						"692f3b2f53bec9b1c971fb05"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Subareas por Area",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:3000/api/subareas/byArea/692e12288ab696efa34d9f79",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"subareas",
+						"byArea",
+						"692e12288ab696efa34d9f79"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Campo Subarea",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MmZkNGFkMjYzZjg4NzQ1ZDIwZmVmZSIsImVtYWlsIjoiZXN0dWRpYW50ZUBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoiZXN0dWRpYW50ZV8wMDEiLCJpYXQiOjE3NjUyMzM4NzYsImV4cCI6MTc2NTMyMDI3Nn0.zKD09-Xc58jIpALDAS9LQe-aZfckZb88Ohzqj_MgLPk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"campo\": \"nombre_subarea\",\r\n  \"dato_nuevo\": \"Limites\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:3000/api/subareas/692f5ee2bd8a2dfc5905a501",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"subareas",
+						"692f5ee2bd8a2dfc5905a501"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar Subarea",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:3000/api/subareas/692f3b2f53bec9b1c971fb05",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"subareas",
+						"692f3b2f53bec9b1c971fb05"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
