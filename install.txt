@@ -5,7 +5,8 @@ Cadena-Nacional para que los capte express.
 
 Sobre credenciales de base de datos (Atlas):
 
-Debe de colocar este string en las variables de entorno .env para el valor de MONGODB_URI
+Debe crear un archivo .env a nivel de package.json,dentro de este debe de colocar este string
+en las variables de entorno .env para el valor de MONGODB_URI
 
 mongodb+srv://<usuario>:<contraseña>@cadenanacional.wz8i9ey.mongodb.net/myDbName?retryWrites=true&w=majority
 
@@ -13,10 +14,39 @@ reemplazando usuario por "guest" y contraseña por "123".
 
 Y adicionar la siguiente linea al .env MONGDB_DBNAME=cuestionarios
 
-Adicional:
+Adicional,dentro del archivo .env:
 
 Se debe especificar las siguientes variables de entorno que pertenecen a la encriptacion de json web token.
-Se recomienda 24h para JWT_EXPIRES_IN, o valores en horas o minutos. JWT_SECRET es una valor de encriptacion personalizable
+Se recomienda "24h" para JWT_EXPIRES_IN, o valores en horas o minutos. JWT_SECRET es una valor de encriptacion personalizable
 
 JWT_SECRET
 JWT_EXPIRES_IN
+
+Para probar el proyecto:
+
+Debe clonar el proyecto de git hacer npm install y ejecutar el comando npm run dev.Cuando aparezca
+el mensaje "Conectado a MongoDB" la conexion ha sido exitosa, para poblar la base de datos cambiar a la ruta
+Cadena-Nacional\src\scripts y ejecutar node datos.js.Una vez realizados estos pasos podra empezar con las pruebas 
+en Postman
+
+Si no tuviera una cuenta en postman siga el siguiente enlace:
+https://www.aluracursos.com/blog/postman-aprenda-como-instalar-y-dar-sus-primeros-pasos
+Una vez haya instalado y creado una cuenta en Postman debe importar los endpoints
+ubicados en la carpeta de Cadena-Nacional\src\postman.Desde la seccion de import del home de Postman
+
+Los endpoint de RUD para las tres areas estan limitados a administradores y profesores
+Los Create pueden ser usados por cualquier usuario
+Para usar un endpoint se debe usar primero el endpoint de Login de API authentication
+Existen 3 usuarios precargados para hacer pruebas en la seccion de Body de dicho endpoint
+Para ejecutar el endpoint solo debe presionar SEND.
+Una vez que se ejecute la consulta, en el mensaje de exito vendra incluido un jw_token
+Debe copiar dicho codigo y pegarlo en la seccion de Headers->Authorization de cada endpoint
+Justo al lado de la palabra Bearer dejando un espacio de separacion.
+
+El endpoint de registrar crea automaticamente asigna automaticamente el rol de alumno.
+Si desea cambiar la configuracion debe entrar al proyeto clonado \src\modules\controllers\authController.js
+y en la linea 31 cambiar por administrador o profesor.
+
+En caso de tener conflictos con la version de node visitar:
+https://blog.logrocket.com/how-switch-node-js-versions-nvm/
+El actual proyecto funciona con la version 22.20 de Node.js

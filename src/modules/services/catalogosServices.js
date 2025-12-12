@@ -1,5 +1,5 @@
 const Catalogo = require('../../models/Catalogo');
-const nameValidator = require('../../utils/nameValidator');
+const { nameValidator } = require('../../utils/nameValidator');
 class CatalogoService {
     async createCatalogo(titulo) {
         const catalogoExists = await Catalogo.findOne({titulo});
